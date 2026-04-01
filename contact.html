@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Shaheen Watch</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-contact">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⌚</span>
+        <span class="logo-text">Shaheen <strong>Watch</strong></span>
+      </a>
+
+      <nav class="header-actions">
+        <button type="button" class="btn-icon" id="btn-theme" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+        <a href="index.html" class="btn-link-admin">Shop</a>
+        <a href="about.html" class="btn-link-admin">About</a>
+        <a href="admin.html" class="btn-link-admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="contact-card fade-in">
+      <h1 class="contact-title">Contact Us</h1>
+      <p class="contact-sub">Tap a number to call.</p>
+
+      <div class="contact-list" id="contact-list"></div>
+      <p class="no-products hidden" id="contact-empty">No contact numbers available.</p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary hidden" id="contact-call-now" href="#">Call now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made by Owais Ahmed Ranjani</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

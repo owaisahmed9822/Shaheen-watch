@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaheen Watch — Shop Watches & Electronics</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-store">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⌚</span>
+        <span class="logo-text">Shaheen <strong>Watch</strong></span>
+      </a>
+
+      <div class="search-wrap">
+        <label for="search-input" class="visually-hidden">Search products</label>
+        <input type="search" id="search-input" placeholder="Search watches, chargers, bulbs..." autocomplete="off" />
+        <button type="button" class="btn-search" id="btn-search" aria-label="Search">🔍</button>
+      </div>
+
+      <nav class="header-actions">
+        <button type="button" class="btn-icon" id="btn-theme" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+        <a href="about.html" class="btn-link-admin">About</a>
+        <a href="contact.html" class="btn-link-admin">Contact</a>
+        <a href="admin.html" class="btn-link-admin">Admin</a>
+        <button type="button" class="btn-cart" id="btn-open-cart" aria-label="Open cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="nav-categories-wrap">
+      <label for="category-filter" class="visually-hidden">Filter by category</label>
+      <select id="category-filter" class="category-select">
+        <option value="">All Categories</option>
+        <option value="Hand Watches">Hand Watches</option>
+        <option value="Wall Watches">Wall Watches</option>
+        <option value="Smart Watches">Smart Watches</option>
+        <option value="Headphones">Headphones</option>
+        <option value="Bluetooth Airbuds">Bluetooth Airbuds</option>
+        <option value="USB Wires">USB Wires</option>
+        <option value="Mobile Chargers">Mobile Chargers</option>
+        <option value="Torch">Torch</option>
+        <option value="Bulbs">Bulbs</option>
+        <option value="Tube Lights">Tube Lights</option>
+        <option value="Electrical Fitting Items">Electrical Fitting Items</option>
+        <option value="Watch Repair Services">Watch Repair Services</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Precision meets style</h1>
+        <p>Watches, audio, lighting, and essentials — curated for you at Shaheen Watch.</p>
+        <a href="#products" class="btn btn-primary">Shop now</a>
+      </div>
+    </section>
+
+    <section id="products" class="products-section">
+      <h2 class="section-title">Our products</h2>
+      <div id="product-grid" class="product-grid"></div>
+      <p id="no-products" class="no-products hidden">No products match your search.</p>
+    </section>
+  </main>
+
+  <!-- Cart drawer -->
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h2>Your cart</h2>
+      <button type="button" class="btn-close" id="btn-close-cart" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cart-total">Rs. 0</strong>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" id="btn-checkout">Checkout</button>
+    </div>
+  </aside>
+  <div class="overlay" id="cart-overlay"></div>
+
+  <!-- Checkout modal -->
+  <div class="modal" id="checkout-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="checkout-backdrop"></div>
+    <div class="modal-panel" role="dialog" aria-labelledby="checkout-title">
+      <button type="button" class="btn-close" id="btn-close-checkout" aria-label="Close">×</button>
+      <h2 id="checkout-title">Checkout</h2>
+      <form id="checkout-form" class="checkout-form">
+        <label>
+          Full name
+          <input type="text" name="name" required placeholder="Your name" />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" required placeholder="03XX XXXXXXX" />
+        </label>
+        <label>
+          Address
+          <textarea name="address" rows="3" required placeholder="Street, city, area"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Submit order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order confirmation -->
+  <div class="modal" id="confirm-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="confirm-backdrop"></div>
+    <div class="modal-panel modal-confirm" role="alertdialog">
+      <div class="confirm-icon">✓</div>
+      <h2>Order placed!</h2>
+      <p id="confirm-message">Thank you. We will contact you soon.</p>
+      <button type="button" class="btn btn-primary" id="btn-confirm-ok">OK</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Made by Owais Ahmed Ranjani</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

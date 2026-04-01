@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Shaheen Watch</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-admin">
+  <header class="admin-header">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">⌚</span>
+      <span class="logo-text">Shaheen <strong>Watch</strong> <span class="badge-admin">Admin</span></span>
+    </a>
+    <div class="admin-header-actions">
+      <button type="button" class="btn-icon" id="admin-btn-theme" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+      <button type="button" class="btn btn-outline hidden" id="btn-logout">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- Login -->
+    <section class="admin-login" id="admin-login">
+      <div class="login-card">
+        <h1>Admin login</h1>
+        <p class="login-hint">Default: <code>admin</code> / <code>shaheen123</code></p>
+        <form id="login-form">
+          <label>
+            Username
+            <input type="text" name="username" required autocomplete="username" />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required autocomplete="current-password" />
+          </label>
+          <p class="form-error hidden" id="login-error">Invalid username or password.</p>
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+        <a href="index.html" class="back-store">← Back to store</a>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="admin-dashboard hidden" id="admin-dashboard">
+      <h1>Dashboard</h1>
+
+      <div class="admin-tabs">
+        <button type="button" class="tab-btn active" data-tab="orders">Orders</button>
+        <button type="button" class="tab-btn" data-tab="products">Products</button>
+        <button type="button" class="tab-btn" data-tab="about">About Us Settings</button>
+        <button type="button" class="tab-btn" data-tab="contact">Contact Settings</button>
+      </div>
+
+      <div class="tab-panel" id="panel-orders">
+        <h2>All orders</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="orders-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+        <p id="no-orders" class="empty-msg hidden">No orders yet.</p>
+      </div>
+
+      <div class="tab-panel hidden" id="panel-products">
+        <h2>Add product</h2>
+        <form id="product-form" class="product-form">
+          <input type="hidden" name="editId" id="product-edit-id" value="" />
+          <div class="form-row">
+            <label>
+              Name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Price (Rs.)
+              <input type="number" name="price" min="0" step="1" required />
+            </label>
+          </div>
+          <label>
+            Category
+            <select name="category" id="product-category" required>
+              <option value="Hand Watches">Hand Watches</option>
+              <option value="Wall Watches">Wall Watches</option>
+              <option value="Smart Watches">Smart Watches</option>
+              <option value="Headphones">Headphones</option>
+              <option value="Bluetooth Airbuds">Bluetooth Airbuds</option>
+              <option value="USB Wires">USB Wires</option>
+              <option value="Mobile Chargers">Mobile Chargers</option>
+              <option value="Torch">Torch</option>
+              <option value="Bulbs">Bulbs</option>
+              <option value="Tube Lights">Tube Lights</option>
+              <option value="Electrical Fitting Items">Electrical Fitting Items</option>
+              <option value="Watch Repair Services">Watch Repair Services</option>
+            </select>
+          </label>
+          <label>
+            Image URL
+            <input type="url" name="image" placeholder="https://..." />
+          </label>
+          <label>
+            Description
+            <textarea name="description" rows="2" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="product-submit-btn">Add product</button>
+            <button type="button" class="btn btn-outline hidden" id="btn-cancel-edit">Cancel edit</button>
+          </div>
+        </form>
+
+        <h2 class="mt-2">Manage products</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="products-admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-admin-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" id="panel-about">
+        <h2>About Us Settings</h2>
+        <form id="about-form" class="product-form">
+          <div class="form-row">
+            <label>
+              Shop Name
+              <input type="text" name="shopName" id="about-shopName" required />
+            </label>
+            <label>
+              Owner Name
+              <input type="text" name="ownerName" id="about-ownerName" required />
+            </label>
+          </div>
+
+          <label>
+            Owner Photo URL (optional)
+            <input type="url" name="ownerPhotoUrl" id="about-ownerPhotoUrl" placeholder="https://..." />
+          </label>
+
+          <label>
+            Or upload photo (base64)
+            <input type="file" id="about-ownerPhotoFile" accept="image/*" />
+            <span class="field-hint">Tip: Uploaded image is stored in localStorage (keep it small).</span>
+          </label>
+
+          <label>
+            Shop Description
+            <textarea name="description" id="about-description" rows="4" required></textarea>
+          </label>
+
+          <label>
+            Address
+            <textarea name="address" id="about-address" rows="3" required></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="about-preview-btn">Update preview</button>
+            <button type="submit" class="btn btn-primary" id="about-save-btn">Save changes</button>
+          </div>
+          <p class="success-msg hidden" id="about-success">About Us updated successfully</p>
+        </form>
+
+        <h2 class="mt-2">Preview</h2>
+        <div class="about-preview fade-in" id="about-preview">
+          <h3 class="about-preview-title" id="about-preview-shopName">Shaheen Watch</h3>
+          <div class="about-preview-avatar-wrap">
+            <img id="about-preview-photo" class="about-preview-avatar" alt="Owner photo preview" />
+          </div>
+          <p class="about-preview-owner" id="about-preview-ownerName">Owner Name</p>
+          <p class="about-preview-desc" id="about-preview-description">Description preview...</p>
+          <p class="about-preview-address" id="about-preview-address"></p>
+        </div>
+      </div>
+
+      <div class="tab-panel hidden" id="panel-contact">
+        <h2>Contact Settings</h2>
+        <form id="contact-form" class="product-form">
+          <div class="form-row">
+            <label>
+              Phone Number 1
+              <input type="tel" id="contact-phone-1" placeholder="94032 61570" />
+            </label>
+            <label>
+              Phone Number 2
+              <input type="tel" id="contact-phone-2" placeholder="70664 31322" />
+            </label>
+          </div>
+          <label>
+            Phone Number 3
+            <input type="tel" id="contact-phone-3" placeholder="93073 36003" />
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-outline" id="contact-preview-btn">Update</button>
+          </div>
+          <p class="success-msg hidden" id="contact-success">Contact updated successfully</p>
+        </form>
+
+        <h2 class="mt-2">Preview</h2>
+        <div class="contact-preview fade-in">
+          <div class="contact-list" id="contact-preview-list"></div>
+          <p class="empty-msg hidden" id="contact-preview-empty">No contact numbers available.</p>
+        </div>
+      </div>
+
+      <a href="index.html" class="back-store">← Back to store</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made by Owais Ahmed Ranjani</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
